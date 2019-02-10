@@ -1,0 +1,10 @@
+body {
+	background: #f3edd8;
+	text-align: center;
+}
+
+.thumbnail {
+	padding-top: 30px;
+	padding-bottom: 10px;
+	width: 150px;
+}
