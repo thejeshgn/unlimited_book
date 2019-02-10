@@ -1,19 +1,7 @@
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="static/css/skeleton.css">
-    <link rel="stylesheet" type="text/css" href="static/css/screen.css">
-
-    <title>Unlimited Book @ Fahrenheit 451</title>
-</head>
-<body>
-	<div class="container">
-  <!-- columns should be the immediate child of a .row -->
-  <div class="row">
-    <div class="tweleve columns"><h1>Unlimited Book </h1></div>
-  </div>
-  
+{% extends "layout.html" %}
+{% block title %}Unlimited Book @ Fahrenheit 451{% endblock %}
+{% block header %}Unlimited Book @ Fahrenheit 451{% endblock %}
+{% block content %}
   <div class="row">
     <div class="one-third column">
     	<img class="thumbnail" src="static/img/8235360-M.jpg" /> <br>
@@ -41,11 +29,4 @@
   </div>
 
 
-   <div class="row">
-    <div class="one-third column">&nbsp;</div>
-    <div class="one-third column">&nbsp;</div>
-    <div class="one-third column"><a href="/about">About</a> | <a href="/help">How to use</a></div>
-  </div>
-</div>
-</body>
-</html>
+{% endblock %}
