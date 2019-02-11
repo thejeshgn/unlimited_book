@@ -2,31 +2,23 @@
 {% block title %}Unlimited Book @ Fahrenheit 451{% endblock %}
 {% block header %}Unlimited Book @ Fahrenheit 451{% endblock %}
 {% block content %}
-  <div class="row">
-    <div class="one-third column">
-    	<img class="thumbnail" src="static/img/8235360-M.jpg" /> <br>
-    	<a href="use.html"><input type="button" class="button-primary" value="Read"></a>
-    </div>
-    <div class="one-third column">
-    	<img class="thumbnail" src="static/img/8235360-M.jpg" /> <br>
-    	<input type="button" class="button-primary" value="Watch"></div>
-    <div class="one-third column">
-    	<img class="thumbnail" src="static/img/8235360-M.jpg" /> <br>
-    	<input type="button" class="button-primary" value="Listen"></div>
-  </div>
 
-  <div class="row">
+{% set loop_cycle = cycler('one', 'two', 'three') %}
+{% for item in items %}
+  {%  set loop_cycle_value = loop_cycle.next() %}
+  {% if loop_cycle_value == "one"  %}
+    <div class="row"> <!-- start row -->
+  {% endif %}  
     <div class="one-third column">
-    	<img class="thumbnail" src="static/img/8235360-M.jpg" /> <br>
-    	<input type="button" class="button-primary" value="button input">
+    	<img class="thumbnail" src="static/content/thumbnail/{{item[3]}}" /> <br>
+    	<a href="static/content/{{item[5]}}" target="_blank"><input type="button" class="button-primary" value="Read"></a>
     </div>
-    <div class="one-third column">
-    	<img class="thumbnail" src="static/img/8235360-M.jpg" /> <br>
-    	<input type="button" class="button-primary" value="button input"></div>
-    <div class="one-third column">
-    	<img class="thumbnail" src="static/img/8235360-M.jpg" /> <br>
-    	<input type="button" class="button-primary" value="button input"></div>
-  </div>
+  {% if loop_cycle_value == "three" or loop.last %}
+    </div> <!-- end row -->
+  {% endif %}
+
+{% endfor %}
+
 
 
 {% endblock %}

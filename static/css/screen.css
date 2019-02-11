@@ -6,5 +6,9 @@ body {
 .thumbnail {
 	padding-top: 30px;
 	padding-bottom: 10px;
-	width: 150px;
+	height: 200px;
+}
+
+.column{
+	vertical-align: bottom;
 }
