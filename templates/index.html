@@ -4,21 +4,52 @@
 {% block content %}
 
 {% set loop_cycle = cycler('one', 'two', 'three') %}
-{% for item in items %}
-  {%  set loop_cycle_value = loop_cycle.next() %}
-  {% if loop_cycle_value == "one"  %}
-    <div class="row"> <!-- start row -->
-  {% endif %}  
-    <div class="one-third column">
-    	<img class="thumbnail" src="static/content/thumbnail/{{item[3]}}" /> <br>
-    	<a href="static/content/{{item[5]}}" target="_blank"><input type="button" class="button-primary" value="Read"></a>
-    </div>
-  {% if loop_cycle_value == "three" or loop.last %}
-    </div> <!-- end row -->
-  {% endif %}
 
-{% endfor %}
+{% if items|length > 0 %}
+  {% for item in items %}
+    {%  set loop_cycle_value = loop_cycle.next() %}
+    {% if loop_cycle_value == "one"  %}
+      <div class="row"> <!-- start row -->
+    {% endif %}  
+      <div class="one-third column">
+      	<img class="thumbnail" src="/static/content/thumbnail/{{item[3]}}" /> <br>
+      	<a href="/static/content/{{item[5]}}" target="_blank"><input type="button" class="button-primary" value="Read"></a>
+      </div>
+    {% if loop_cycle_value == "three" or loop.last %}
+      </div> <!-- end row -->
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if items|length == 0 %}
+ <div class="row">
+        
+        <div class="twelve columns">
+          Nothing to show.
+        </div>
+</div>        
+{% endif %}
 
+
+  <div class="row">        
+        <div class="six columns">
+          &nbsp;
+          {% if page_number|int > 0  %}              
+              <a href="/{{ (page_number | int) - 1}}">
+              <input type="button" class="button" value="<< Prev"/>
+              </a>
+          {% endif %} 
+        </div>
+
+        <div class="six columns">
+          &nbsp;
+          {% if items|length > 0 %}
+          <a href="/{{ (page_number | int ) + 1}}">
+            <input type="button" class="button" value="Next >>" />
+          </a>
+          {% endif %} 
+        </div>
+
+  </div>
 
 
 {% endblock %}

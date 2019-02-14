@@ -8,11 +8,24 @@ app = Flask(__name__)
 db_file = "db.sqlite"
 
 
-@app.route('/<page_number>')
-def home(page_number=0):
+
+@app.route('/')
+def home():
+	page_number=0
 	conn = connection(db_file)
 	items = select_items(conn,page_number)
 	#print(items)
+	return render_template('index.html', page_number=page_number,items=items)
+
+@app.route('/<page_number>')
+def pages(page_number=0):
+	if int(page_number) < 0:
+		page_number = 0
+	conn = connection(db_file)
+	items = select_items(conn,page_number)
+	#print(items)
+	if items is None:
+		items = []
 	return render_template('index.html', page_number=page_number,items=items)
 
 @app.route('/about')
@@ -34,7 +47,7 @@ def connection(db_file):
 
 def select_items(conn,page_number=0):
 	cur = conn.cursor()
-	page_items = 10
+	page_items = 6
 	max_id = int(page_number) * int(page_items)
 	sql ="SELECT * FROM ITEMS where id > {max_id} order by id limit {page_items}".format(max_id=max_id,page_items=page_items) 
 	#print(sql)
