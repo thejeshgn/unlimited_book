@@ -12,3 +12,10 @@ body {
 .column{
 	vertical-align: bottom;
 }
+
+
+.title {
+    margin: 10px;
+  	/*color: #545454;*/
+    font-size: 1.1em;
+}

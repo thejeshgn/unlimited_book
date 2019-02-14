@@ -12,8 +12,9 @@
       <div class="row"> <!-- start row -->
     {% endif %}  
       <div class="one-third column">
-      	<img class="thumbnail" src="/static/content/thumbnail/{{item[3]}}" /> <br>
-      	<a href="/static/content/{{item[5]}}" target="_blank"><input type="button" class="button-primary" value="Read"></a>
+      	<img class="thumbnail" src="/static/content/thumbnail/{{item[3]}}" />
+        <h1 class="title">{{item[1]}}</h1>
+      	<a href="/static/content/{{item[5]}}" target="_blank"><input type="button" class="button-primary" value="{{item[4]}}"></a>
       </div>
     {% if loop_cycle_value == "three" or loop.last %}
       </div> <!-- end row -->
@@ -28,7 +29,11 @@
         </div>
 </div>        
 {% endif %}
-
+ <div class="row">
+        <div class="twelve columns">
+          &nbsp;
+        </div>
+ </div>
 
   <div class="row">        
         <div class="six columns">
